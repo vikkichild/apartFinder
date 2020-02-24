@@ -27,7 +27,12 @@ const SearchScreen = ({navigation, route}) => {
       return (
         <View style={styles.searchResultContainer}>
           {cityList.map(city => (
-            <TouchableOpacity style={styles.searchResult}>
+            <TouchableOpacity
+              key={city.l}
+              style={styles.searchResult}
+              onPress={() =>
+                navigation.navigate('City', {cityName: city.name})
+              }>
               <Image
                 style={styles.pointIcon}
                 source={{
