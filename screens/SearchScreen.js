@@ -46,7 +46,7 @@ const SearchScreen = ({navigation, route}) => {
                   style={styles.openIcon}
                   source={{
                     uri:
-                      'https://cdn4.iconfinder.com/data/icons/arrow-68/48/37-512.png',
+                      'https://cdn1.iconfinder.com/data/icons/arrows-i/24/Material_icons-02-08-512.png',
                   }}
                 />
               </View>
