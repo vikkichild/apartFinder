@@ -6,7 +6,6 @@ import HomeScreen from './screens/HomeScreen';
 import SearchScreen from './screens/SearchScreen';
 import CityScreen from './screens/CityScreen';
 import PlaceScreen from './screens/PlaceScreen';
-import CarouselScreen from './screens/CarouselScreen';
 
 const Stack = createStackNavigator();
 
@@ -17,7 +16,6 @@ const App = () => (
       <Stack.Screen name="Search" component={SearchScreen} />
       <Stack.Screen name="City" component={CityScreen} />
       <Stack.Screen name="Place" component={PlaceScreen} />
-      <Stack.Screen name="Carousel" component={CarouselScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );

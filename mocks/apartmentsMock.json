@@ -230,7 +230,7 @@
     "price_sqft": "£943",
     "ownership_type": "Leasehold",
     "parking": "",
-    "year_build": "",
+    "year_build": "2000",
     "data": "2020-02-24T09:43:47"
   },
   {
@@ -258,7 +258,7 @@
     "price_sqft": "£764",
     "ownership_type": "Freehold",
     "parking": "",
-    "year_build": "",
+    "year_build": "2000",
     "data": "2020-02-20T09:43:47"
   },
   {
@@ -285,7 +285,7 @@
     "price_sqft": "142",
     "ownership_type": "Freehold",
     "parking": "",
-    "year_build": "",
+    "year_build": "2000",
     "data": "2023-02-20T09:43:47"
   }
 ]

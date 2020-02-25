@@ -52,6 +52,10 @@ const PlaceScreen = ({navigation, route}) => {
             <Text style={styles.placeSizeInfoText}>sqm</Text>
           </View>
         </View>
+        <View style={styles.placeAdditionalInfo}>
+          <Text>For Sale</Text>
+          <Text>Build in {place.year_build}</Text>
+        </View>
         <View style={styles.placeDescription}>
           <Text style={styles.placeDescriptionTitle}>Description:</Text>
           <Text style={styles.placeDescriptionText}>{place.overview}</Text>
@@ -153,6 +157,10 @@ const styles = StyleSheet.create({
   placeDescriptionText: {
     fontSize: 15,
     color: '#828282',
+  },
+  placeAdditionalInfo: {
+    marginLeft: 15,
+    marginBottom: 15,
   },
 });
 
