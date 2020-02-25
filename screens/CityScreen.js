@@ -24,7 +24,7 @@ const CityScreen = ({navigation, route}) => {
         <TouchableOpacity onPress={() => navigation.navigate('Place', {place})}>
           <ImageBackground
             source={{
-              uri: `${place.photo[0]}`,
+              uri: `${place.photos[0]}`,
             }}
             style={styles.placePhoto}>
             <Text style={[styles.placeText, {fontSize: 25, bottom: 35}]}>

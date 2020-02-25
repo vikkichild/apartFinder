@@ -4,10 +4,10 @@ import {
   Text,
   View,
   ScrollView,
-  ImageBackground,
   TouchableOpacity,
   Image,
 } from 'react-native';
+import ImagesCarousel from '../components/ImagesCarousel';
 
 const PlaceScreen = ({navigation, route}) => {
   const {place} = route.params;
@@ -15,22 +15,17 @@ const PlaceScreen = ({navigation, route}) => {
     place && (
       <View>
         <View style={styles.placePhotoBlock}>
-          <TouchableOpacity onPress={() => alert('photo pressed')}>
-            <ImageBackground
+          <ImagesCarousel images={place.photos} />
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => navigation.navigate('City')}>
+            <Image
+              style={styles.backIcon}
               source={{
-                uri: `${place.photo[0]}`,
+                uri:
+                  'https://c7.uihere.com/icons/129/421/307/arrow-left-543a69a4e73020bd68f21781c65b359c.png',
               }}
-              style={styles.placePhoto}>
-              <TouchableOpacity onPress={() => navigation.navigate('City')}>
-                <Image
-                  style={styles.backIcon}
-                  source={{
-                    uri:
-                      'https://c7.uihere.com/icons/129/421/307/arrow-left-543a69a4e73020bd68f21781c65b359c.png',
-                  }}
-                />
-              </TouchableOpacity>
-            </ImageBackground>
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.placePriceBlock}>
@@ -77,6 +72,10 @@ const styles = StyleSheet.create({
   },
   placePhotoBlock: {
     height: 200,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 5,
   },
   backIcon: {
     width: 25,
@@ -149,6 +148,7 @@ const styles = StyleSheet.create({
   },
   placeDescriptionTitle: {
     fontSize: 15,
+    marginBottom: 10,
   },
   placeDescriptionText: {
     fontSize: 15,
