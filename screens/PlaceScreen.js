@@ -55,6 +55,10 @@ const PlaceScreen = ({navigation, route}) => {
         <View style={styles.placeAdditionalInfo}>
           <Text>For Sale</Text>
           <Text>Build in {place.year_build}</Text>
+          <TouchableOpacity
+            onPress={() => alert('More Details Button Pressed!')}>
+            <Text style={styles.placeMoreDetailsButton}>MORE DETAILS</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.placeDescription}>
           <Text style={styles.placeDescriptionTitle}>Description:</Text>
@@ -161,6 +165,10 @@ const styles = StyleSheet.create({
   placeAdditionalInfo: {
     marginLeft: 15,
     marginBottom: 15,
+  },
+  placeMoreDetailsButton: {
+    marginTop: 15,
+    color: '#2438c9',
   },
 });
 
