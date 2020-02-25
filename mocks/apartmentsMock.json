@@ -133,18 +133,6 @@
     "data": "2020-02-22T09:43:47"
   },
   {
-    "id": "6",
-    "city": "Brisbane, Australia",
-    "lat": "41.090000",
-    "ll": "41.090000 45.369999",
-    "lon": "45.369999",
-    "name": "Qazax, Azerbaijan",
-    "type": "city",
-    "tz": "Asia/Baku",
-    "tzs": "+04",
-    "zmw": "00000.26.37639"
-  },
-  {
     "id": "7",
     "city": "Brooklyn, New York",
     "address": "235 Ocean Pkwy APT 8B, NY 11218",
@@ -275,9 +263,9 @@
   },
   {
     "id": "15",
-    "city": "Wallsend, United Kingdom",
+    "city": "London, United Kingdom",
     "address": "Carville Gardens, Tyne And Wear NE28",
-    "overview": "We welcome to the market this well presented two bed mid terraced property which is nicely situated on Carville Road, Wallsend which is within walking distance of local amenities and Wallsend Metro Station. The property briefly comprises: Entrance porch, lounge, inner hallway, bathroom and kitchen which offers a good range of wall, floor and drawer units and leads onto the rear courtyard. To the first floor there is two double bedrooms. We feel this property would suit a range of buyers and early viewings are strongly recommended to fully appreciate the standard of accommodation on offer. EPC Grade E.",
+    "overview": "We welcome to the market this well presented two bed mid terraced property which is nicely situated on Carville Road, London which is within walking distance of local amenities and Wallsend Metro Station. The property briefly comprises: Entrance porch, lounge, inner hallway, bathroom and kitchen which offers a good range of wall, floor and drawer units and leads onto the rear courtyard. To the first floor there is two double bedrooms. We feel this property would suit a range of buyers and early viewings are strongly recommended to fully appreciate the standard of accommodation on offer. EPC Grade E.",
     "photo": [
       "https://lc.zoocdn.com/ea48231e14c58395fc2faee28d64ea3949eeb736.jpg",
       "https://lc.zoocdn.com/cc9bd249423f44aad14cfc977f419175054d4c08.jpg",

@@ -21,7 +21,7 @@ const CityScreen = ({navigation, route}) => {
     filteredPlaces &&
     filteredPlaces.map(place => (
       <View key={place.id} style={styles.placeContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Place', {place})}>
           <ImageBackground
             source={{
               uri: `${place.photo[0]}`,
