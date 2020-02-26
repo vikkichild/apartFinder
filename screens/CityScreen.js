@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import places from '../mocks/apartmentsMock.json';
-import {filterPlaces} from '../utils';
+import {filterPlaces, formatDate} from '../utils';
 
 const CityScreen = ({navigation, route}) => {
   const {cityName} = route.params;
@@ -27,12 +27,26 @@ const CityScreen = ({navigation, route}) => {
               uri: place.photos[0],
             }}
             style={styles.placePhoto}>
-            <Text style={[styles.placeText, {fontSize: 25, bottom: 35}]}>
-              {place.price}
-            </Text>
-            <Text style={[styles.placeText, {fontSize: 17, bottom: 10}]}>
-              {place.address}
-            </Text>
+            <View style={styles.placeLabel}>
+              <Text style={{color: '#ffffff'}}>
+                {formatDate(place.data) < 1
+                  ? 'today'
+                  : `${formatDate(place.data)}d ago`}
+              </Text>
+            </View>
+            <View style={styles.placeTextBlock}>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={[styles.placePriceText, styles.placeText]}>
+                  {place.price}
+                </Text>
+                <Text style={[styles.placeSizeText, styles.placeText]}>
+                  {place.beds} bd {place.baths} ba {place.sqft} sqft
+                </Text>
+              </View>
+              <Text style={[styles.placeAddressText, styles.placeText]}>
+                {place.address}
+              </Text>
+            </View>
           </ImageBackground>
         </TouchableOpacity>
       </View>
@@ -107,15 +121,36 @@ const styles = StyleSheet.create({
   placeText: {
     fontWeight: 'bold',
     color: '#ffffff',
-    marginLeft: 20,
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10,
+  },
+  placePriceText: {
+    fontSize: 25,
+  },
+  placeSizeText: {
+    marginTop: 10,
+    marginLeft: 5,
+    fontSize: 15,
+  },
+  placeAddressText: {
+    fontSize: 17,
+  },
+  placeTextBlock: {
+    marginLeft: 20,
     position: 'absolute',
+    bottom: 10,
   },
   placePhoto: {
     width: '100%',
     height: '100%',
+  },
+  placeLabel: {
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    width: '17%',
+    marginTop: 10,
+    marginLeft: 15,
+    paddingLeft: 5,
   },
 });
 
