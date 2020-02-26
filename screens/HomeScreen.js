@@ -15,7 +15,7 @@ const HomeScreen = ({navigation}) => {
   const [inputValue, onChangeInputValue] = useState('');
 
   const displaySearchButton = () => {
-    if (inputValue) {
+    if (inputValue && inputValue.length > 2) {
       return (
         <TouchableOpacity
           style={styles.searchButtonContainer}
