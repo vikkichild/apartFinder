@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,7 +10,32 @@ import {
 import ImagesCarousel from '../components/ImagesCarousel';
 
 const PlaceScreen = ({navigation, route}) => {
+  const [isVisibleDetailsBlock, setIsVisibleDetailsBlock] = useState(true);
+  const [isVisibleAmenitiesBlock, setIsVisibleAmenitiesBlock] = useState(true);
+  const [isVisibleDescriptionBlock, setIsVisibleDescriptionBlock] = useState(
+    true,
+  );
   const {place} = route.params;
+  const checkMarkImage = (
+    <Image
+      style={styles.checkMarkIcon}
+      source={{
+        uri:
+          'https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/checkmark-24-512.png',
+      }}
+    />
+  );
+  const toggleImageURL = condition =>
+    condition
+      ? 'https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-up-01-512.png'
+      : 'https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-down-01-512.png';
+  const displayAmenity = (condition, text) =>
+    !!condition && (
+      <View style={{flexDirection: 'row'}}>
+        {checkMarkImage}
+        <Text>{text}</Text>
+      </View>
+    );
   const displayPlace = () =>
     place && (
       <View>
@@ -32,7 +57,9 @@ const PlaceScreen = ({navigation, route}) => {
           <Text style={styles.placePrice}>{place.price}</Text>
         </View>
         <View style={styles.placeAddressBlock}>
-          <Text style={styles.placeAddress}>{place.address}</Text>
+          <Text style={styles.placeAddress}>
+            {place.address} {place.city}
+          </Text>
         </View>
         <View style={styles.placeSizeInfoBlock}>
           <View style={styles.placeSizeInfoLeft}>
@@ -52,17 +79,125 @@ const PlaceScreen = ({navigation, route}) => {
             <Text style={styles.placeSizeInfoText}>sqm</Text>
           </View>
         </View>
-        <View style={styles.placeAdditionalInfo}>
-          <Text>For Sale</Text>
-          <Text>Build in {place.year_build}</Text>
-          <TouchableOpacity
-            onPress={() => alert('More Details Button Pressed!')}>
-            <Text style={styles.placeMoreDetailsButton}>MORE DETAILS</Text>
-          </TouchableOpacity>
+        <View
+          style={[
+            styles.placeDetailsBlock,
+            {marginBottom: isVisibleDetailsBlock ? 15 : 0},
+          ]}>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={styles.placeBlockTitle}>Details</Text>
+            <TouchableOpacity
+              style={styles.toggleIconButton}
+              onPress={() => setIsVisibleDetailsBlock(!isVisibleDetailsBlock)}>
+              <Image
+                style={styles.toggleIcon}
+                source={{
+                  uri: toggleImageURL(isVisibleDetailsBlock),
+                }}
+              />
+            </TouchableOpacity>
+          </View>
+          {isVisibleDetailsBlock && (
+            <View style={{flexDirection: 'row'}}>
+              <View style={{flex: 1}}>
+                <Text>Type</Text>
+                <Text>Area</Text>
+                <Text>Bedrooms</Text>
+                <Text>Bathrooms</Text>
+                <Text>Price</Text>
+                <Text>Price per sqft</Text>
+                <Text>Ownership type</Text>
+                <Text>Build year</Text>
+              </View>
+              <View style={{flex: 1}}>
+                <Text>{place.property_type}</Text>
+                <Text>
+                  {place.sqft} sqft / {place.sqm} sqm
+                </Text>
+                <Text>{place.beds}</Text>
+                <Text>{place.baths}</Text>
+                <Text>{place.price}</Text>
+                <Text>{place.price_sqft}</Text>
+                <Text>{place.ownership_type}</Text>
+                <Text>{place.year_build ? place.year_build : '---'}</Text>
+              </View>
+            </View>
+          )}
         </View>
-        <View style={styles.placeDescription}>
-          <Text style={styles.placeDescriptionTitle}>Description:</Text>
-          <Text style={styles.placeDescriptionText}>{place.overview}</Text>
+        <View
+          style={[
+            styles.placeAmenitiesBlock,
+            {paddingBottom: isVisibleAmenitiesBlock ? 10 : 0},
+          ]}>
+          <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity
+              style={styles.toggleIconButton}
+              onPress={() =>
+                setIsVisibleAmenitiesBlock(!isVisibleAmenitiesBlock)
+              }>
+              <Image
+                style={styles.toggleIcon}
+                source={{
+                  uri: toggleImageURL(isVisibleAmenitiesBlock),
+                }}
+              />
+            </TouchableOpacity>
+            <Text style={styles.placeBlockTitle}>Amenities</Text>
+          </View>
+          {isVisibleAmenitiesBlock && (
+            <View style={{flexDirection: 'row'}}>
+              <View style={{flex: 1, paddingRight: 10}}>
+                {displayAmenity(place.parking, 'Parking')}
+                {displayAmenity(place.ac, 'A/C')}
+                {displayAmenity(place.balcony, 'Balcony')}
+                {displayAmenity(place.security, 'Security Service')}
+                {displayAmenity(place.pets_allowed, 'Pets Allowed')}
+                {displayAmenity(place.view_of_water, 'View of Water')}
+                {displayAmenity(place.build_in_wardrobes, 'Build-in Wardrobes')}
+                {displayAmenity(
+                  place.build_in_kitchen_appliances,
+                  'Build-in Kitchen Appliances',
+                )}
+                {displayAmenity(place.shared_gym, 'Shared Gym')}
+                {displayAmenity(place.private_pool, 'Private Pool')}
+              </View>
+              <View style={{flex: 1}}>
+                {displayAmenity(place.covered_parking, 'Covered Parking')}
+                {displayAmenity(place.central_heat, 'Central Heat')}
+                {displayAmenity(place.shared_pool, 'Shared Pool')}
+                {displayAmenity(place.concierge_service, 'Concierge Service')}
+                {displayAmenity(place.children_play_area, 'Children Play Area')}
+                {displayAmenity(place.walk_in_closet, 'Walk-in Closet')}
+                {displayAmenity(place.barbecue_area, 'Barbecue Area')}
+                {displayAmenity(place.private_garden, 'Private Garden')}
+                {displayAmenity(place.private_jacuzzi, 'Private Jacuzzi')}
+              </View>
+            </View>
+          )}
+        </View>
+        <View
+          style={[
+            styles.placeDescriptionBlock,
+            {paddingBottom: isVisibleDescriptionBlock ? 10 : 0},
+          ]}>
+          <View>
+            <Text style={styles.placeBlockTitle}>Description</Text>
+            <TouchableOpacity
+              style={styles.toggleIconButton}
+              onPress={() =>
+                setIsVisibleDescriptionBlock(!isVisibleDescriptionBlock)
+              }>
+              <Image
+                style={styles.toggleIcon}
+                source={{
+                  uri: toggleImageURL(isVisibleDescriptionBlock),
+                }}
+              />
+            </TouchableOpacity>
+          </View>
+          {isVisibleDescriptionBlock && (
+            <Text style={styles.placeDescriptionText}>{place.overview}</Text>
+          )}
         </View>
       </View>
     );
@@ -145,30 +280,46 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     textAlign: 'center',
   },
-  placeDescription: {
+  placeDescriptionBlock: {
     paddingTop: 10,
     paddingLeft: 15,
-    paddingBottom: 10,
     borderTopColor: '#d1d1d1',
     borderTopWidth: 7,
     borderBottomColor: '#d1d1d1',
     borderBottomWidth: 7,
   },
-  placeDescriptionTitle: {
-    fontSize: 15,
+  placeBlockTitle: {
+    fontWeight: 'bold',
+    fontSize: 17,
     marginBottom: 10,
   },
   placeDescriptionText: {
     fontSize: 15,
     color: '#828282',
+    paddingRight: 10,
   },
-  placeAdditionalInfo: {
+  placeDetailsBlock: {
     marginLeft: 15,
-    marginBottom: 15,
   },
-  placeMoreDetailsButton: {
-    marginTop: 15,
-    color: '#2438c9',
+  placeAmenitiesBlock: {
+    borderTopColor: '#d1d1d1',
+    borderTopWidth: 7,
+    paddingTop: 10,
+    paddingLeft: 15,
+  },
+  checkMarkIcon: {
+    width: 15,
+    height: 15,
+    marginTop: 3,
+    marginRight: 10,
+  },
+  toggleIconButton: {
+    position: 'absolute',
+    right: 15,
+  },
+  toggleIcon: {
+    width: 25,
+    height: 25,
   },
 });
 
