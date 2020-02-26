@@ -22,6 +22,29 @@ const SearchScreen = ({navigation, route}) => {
     setCityList(filteredCityList);
   }, [result]);
 
+  const getCityList = async text => {
+    const response = await fetch(
+      `https://devru-latitude-longitude-find-v1.p.rapidapi.com/latlon.php?location=${text}`,
+      {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-host': 'devru-latitude-longitude-find-v1.p.rapidapi.com',
+          'x-rapidapi-key':
+            'a002804b5fmsh3ef43d6b0756d2bp15e9d8jsn1dc393d4fe01',
+        },
+      },
+    );
+    const data = await response.json();
+    const resultList = data.Results;
+    const filteredCityList = filterCityList(resultList);
+    setCityList(filteredCityList);
+  };
+
+  const handleTextInputChange = text => {
+    onChangeInputValue(text);
+    text.length > 2 && getCityList(text);
+  };
+
   const displaySearchResult = () => {
     if (cityList) {
       return (
@@ -75,7 +98,7 @@ const SearchScreen = ({navigation, route}) => {
             autoFocus={true}
             placeholder={'Search'}
             value={inputValue}
-            onChangeText={text => onChangeInputValue(text)}
+            onChangeText={text => handleTextInputChange(text)}
           />
           <TouchableOpacity
             style={styles.cleanIconButton}
