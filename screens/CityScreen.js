@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
   container: {flex: 1},
   cityContainer: {
     height: 50,
-    borderRadius: 3,
     backgroundColor: '#ffffff',
     flexDirection: 'row',
     borderBottomWidth: 1,

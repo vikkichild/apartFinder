@@ -57,7 +57,7 @@ const HomeScreen = ({navigation}) => {
             'https://images.unsplash.com/photo-1577744062836-c90121eb0331?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80',
         }}
         style={{width: '100%', height: '100%'}}>
-        <TopBar handleButtonPress={() => navigation.navigate('Search')} />
+        <TopBar handleButtonPress={() => navigation.navigate('Login')} />
         <Text style={styles.text}>Start your search</Text>
         <View style={styles.searchContainer}>
           <Image
