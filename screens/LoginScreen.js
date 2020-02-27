@@ -1,20 +1,17 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 
+import TopBar from '../components/TopBar';
+
 const LoginScreen = ({navigation}) => (
   <View style={styles.container}>
-    <View style={styles.headerBlock}>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-        <Image
-          style={styles.backIcon}
-          source={{
-            uri:
-              'https://icons.iconarchive.com/icons/icons8/ios7/256/Arrows-Left-icon.png',
-          }}
-        />
-      </TouchableOpacity>
-      <Text style={styles.title}>Sign Up or Log In</Text>
-    </View>
+    <TopBar
+      handleButtonPress={() => navigation.navigate('Home')}
+      icon={
+        'https://icons.iconarchive.com/icons/icons8/ios7/256/Arrows-Left-icon.png'
+      }
+      title={'Sign Up or Log In'}
+    />
     <View style={styles.loginTextBlock}>
       <Text style={styles.loginTextTitle}>One account. All devices.</Text>
       <Text style={styles.loginText}>
@@ -51,7 +48,7 @@ const LoginScreen = ({navigation}) => (
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => alert('Email Login Page')}
+        onPress={() => navigation.navigate('SignUp')}
         style={[styles.loginButtonEmail, styles.loginButton]}>
         <Image
           style={styles.emailIcon}
@@ -73,27 +70,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
   },
-  headerBlock: {
-    height: 50,
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderBottomColor: '#b8b8b8',
-    paddingTop: 10,
-    paddingLeft: 15,
-    paddingRight: 10,
-  },
-  title: {
-    marginLeft: 25,
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  backIcon: {
-    marginTop: 3,
-    width: 25,
-    height: 25,
-  },
   loginTextBlock: {
-    marginTop: 100,
+    flex: 1,
+    marginTop: 80,
     marginLeft: 40,
   },
   loginTextTitle: {
@@ -107,7 +86,7 @@ const styles = StyleSheet.create({
     paddingRight: 30,
   },
   loginButtonBlock: {
-    marginTop: 150,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
   },

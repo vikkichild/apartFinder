@@ -9,8 +9,6 @@ import {
   TextInput,
 } from 'react-native';
 
-import TopBar from '../components/TopBar';
-
 const HomeScreen = ({navigation}) => {
   const [inputValue, onChangeInputValue] = useState('');
 
@@ -57,7 +55,12 @@ const HomeScreen = ({navigation}) => {
             'https://images.unsplash.com/photo-1577744062836-c90121eb0331?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80',
         }}
         style={{width: '100%', height: '100%'}}>
-        <TopBar handleButtonPress={() => navigation.navigate('Login')} />
+        <View style={styles.topBarBlock}>
+          <Text style={styles.topBarText}>Apartment Finder</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.topBarText}>LOGIN</Text>
+          </TouchableOpacity>
+        </View>
         <Text style={styles.text}>Start your search</Text>
         <View style={styles.searchContainer}>
           <Image
@@ -88,9 +91,22 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'white',
+    color: '#ffffff',
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  topBarBlock: {
+    alignSelf: 'stretch',
+    height: 52,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingLeft: 20,
+    paddingRight: 10,
+  },
+  topBarText: {
+    fontSize: 20,
+    color: '#ffffff',
   },
   searchContainer: {
     marginLeft: 20,

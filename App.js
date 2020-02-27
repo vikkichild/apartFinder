@@ -7,6 +7,7 @@ import SearchScreen from './screens/SearchScreen';
 import CityScreen from './screens/CityScreen';
 import PlaceScreen from './screens/PlaceScreen';
 import LoginScreen from './screens/LoginScreen';
+import SignUpScreen from './screens/SignUpScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ const App = () => (
       <Stack.Screen name="City" component={CityScreen} />
       <Stack.Screen name="Place" component={PlaceScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="SignUp" component={SignUpScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );
