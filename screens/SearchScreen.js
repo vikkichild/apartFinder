@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Geolocation from '@react-native-community/geolocation';
 import {
   View,
   Image,
@@ -13,9 +14,14 @@ import {
 import {filterCityList} from '../utils';
 
 const SearchScreen = ({navigation}) => {
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const [inputValue, onChangeInputValue] = useState('');
   const [cityList, setCityList] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [location, setLocation] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
 
   const getCityList = async text => {
     setLoading(true);
@@ -37,6 +43,19 @@ const SearchScreen = ({navigation}) => {
     setLoading(false);
   };
 
+  const getLocation = () => {
+    Geolocation.getCurrentPosition(
+      loc => {
+        setError('');
+        setLocation({
+          latitude: loc.coords.latitude,
+          longitude: loc.coords.longitude,
+        });
+      },
+      err => setError(err.message),
+    );
+  };
+
   const handleTextInputChange = text => {
     onChangeInputValue(text);
     text.length > 2 && getCityList(text);
@@ -45,41 +64,6 @@ const SearchScreen = ({navigation}) => {
   const handleCleanButton = () => {
     onChangeInputValue('');
     setCityList('');
-  };
-
-  const displaySearchResult = () => {
-    if (cityList && inputValue) {
-      return (
-        <View style={styles.searchResultContainer}>
-          {cityList.map(city => (
-            <TouchableOpacity
-              key={city.l}
-              style={styles.searchResult}
-              onPress={() =>
-                navigation.navigate('City', {cityName: city.name})
-              }>
-              <Image
-                style={styles.pointIcon}
-                source={{
-                  uri:
-                    'https://cdn0.iconfinder.com/data/icons/basic-for-ui-ux-glyph-version/32/basic_uiux_glyph-01-512.png',
-                }}
-              />
-              <View style={styles.searchResultTextContainer}>
-                <Text style={styles.searchResultText}>{city.name}</Text>
-                <Image
-                  style={styles.openIcon}
-                  source={{
-                    uri:
-                      'https://cdn1.iconfinder.com/data/icons/arrows-i/24/Material_icons-02-08-512.png',
-                  }}
-                />
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
-      );
-    }
   };
 
   return (
@@ -119,7 +103,52 @@ const SearchScreen = ({navigation}) => {
             <ProgressBarAndroid styleAttr="Horizontal" color="#2196F3" />
           )}
         </View>
-        {displaySearchResult()}
+        {!inputValue && (
+          <View style={styles.locationContainer}>
+            <TouchableOpacity
+              style={styles.locationButton}
+              onPress={getLocation}>
+              <Image
+                style={styles.locationIcon}
+                source={{
+                  uri:
+                    'https://cdn0.iconfinder.com/data/icons/typicons-2/24/location-arrow-512.png',
+                }}
+              />
+              <Text style={styles.locationText}>Search nearby</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+        {!!cityList && !!inputValue && (
+          <View style={styles.searchResultContainer}>
+            {cityList.map(city => (
+              <TouchableOpacity
+                key={city.l}
+                style={styles.searchResult}
+                onPress={() =>
+                  navigation.navigate('City', {cityName: city.name})
+                }>
+                <Image
+                  style={styles.pointIcon}
+                  source={{
+                    uri:
+                      'https://cdn0.iconfinder.com/data/icons/basic-for-ui-ux-glyph-version/32/basic_uiux_glyph-01-512.png',
+                  }}
+                />
+                <View style={styles.searchResultTextContainer}>
+                  <Text style={styles.searchResultText}>{city.name}</Text>
+                  <Image
+                    style={styles.openIcon}
+                    source={{
+                      uri:
+                        'https://cdn1.iconfinder.com/data/icons/arrows-i/24/Material_icons-02-08-512.png',
+                    }}
+                  />
+                </View>
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
       </View>
     </ScrollView>
   );
@@ -213,6 +242,38 @@ const styles = StyleSheet.create({
     marginTop: 15,
     position: 'absolute',
     right: 10,
+  },
+  locationContainer: {
+    marginBottom: 10,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  locationButton: {
+    height: 55,
+    borderRadius: 3,
+    backgroundColor: '#ffffff',
+    flexDirection: 'row',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3,
+  },
+  locationIcon: {
+    marginTop: 6,
+    marginLeft: 5,
+    height: 40,
+    width: 40,
+  },
+  locationText: {
+    marginTop: 17,
+    marginLeft: 5,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
 });
 
