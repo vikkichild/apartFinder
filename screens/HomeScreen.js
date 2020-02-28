@@ -57,7 +57,7 @@ const HomeScreen = ({navigation}) => {
         style={{width: '100%', height: '100%'}}>
         <View style={styles.topBarBlock}>
           <Text style={styles.topBarText}>Apartment Finder</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <TouchableOpacity onPress={() => navigation.navigate('CommonLogin')}>
             <Text style={styles.topBarText}>LOGIN</Text>
           </TouchableOpacity>
         </View>
