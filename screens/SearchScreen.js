@@ -11,16 +11,9 @@ import {
 
 import {filterCityList} from '../utils';
 
-const SearchScreen = ({navigation, route}) => {
+const SearchScreen = ({navigation}) => {
   const [inputValue, onChangeInputValue] = useState('');
   const [cityList, setCityList] = useState('');
-  const {result, searchInputValue} = route.params;
-
-  useEffect(() => onChangeInputValue(searchInputValue), [searchInputValue]);
-  useEffect(() => {
-    const filteredCityList = filterCityList(result);
-    setCityList(filteredCityList);
-  }, [result]);
 
   const getCityList = async text => {
     const response = await fetch(
