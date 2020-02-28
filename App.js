@@ -9,6 +9,7 @@ import PlaceScreen from './screens/PlaceScreen';
 import CommonLoginScreen from './screens/CommonLoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import LoginScreen from './screens/LoginScreen';
+import MapViewScreen from './screens/MapViewScreen';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ const App = () => (
       <Stack.Screen name="CommonLogin" component={CommonLoginScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="MapView" component={MapViewScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );

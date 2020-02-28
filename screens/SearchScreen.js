@@ -56,6 +56,13 @@ const SearchScreen = ({navigation}) => {
     );
   };
 
+  const goToMapViewScreen = () => navigation.navigate('MapView', location);
+
+  const handleLocationButtonClick = async () => {
+    await getLocation();
+    await goToMapViewScreen();
+  };
+
   const handleTextInputChange = text => {
     onChangeInputValue(text);
     text.length > 2 && getCityList(text);
@@ -107,7 +114,7 @@ const SearchScreen = ({navigation}) => {
           <View style={styles.locationContainer}>
             <TouchableOpacity
               style={styles.locationButton}
-              onPress={getLocation}>
+              onPress={handleLocationButtonClick}>
               <Image
                 style={styles.locationIcon}
                 source={{
