@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Image,
@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  ProgressBarAndroid,
 } from 'react-native';
 
 import {filterCityList} from '../utils';
@@ -14,8 +15,10 @@ import {filterCityList} from '../utils';
 const SearchScreen = ({navigation}) => {
   const [inputValue, onChangeInputValue] = useState('');
   const [cityList, setCityList] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const getCityList = async text => {
+    setLoading(true);
     const response = await fetch(
       `https://devru-latitude-longitude-find-v1.p.rapidapi.com/latlon.php?location=${text}`,
       {
@@ -31,6 +34,7 @@ const SearchScreen = ({navigation}) => {
     const resultList = data.Results;
     const filteredCityList = filterCityList(resultList);
     setCityList(filteredCityList);
+    setLoading(false);
   };
 
   const handleTextInputChange = text => {
@@ -38,8 +42,13 @@ const SearchScreen = ({navigation}) => {
     text.length > 2 && getCityList(text);
   };
 
+  const handleCleanButton = () => {
+    onChangeInputValue('');
+    setCityList('');
+  };
+
   const displaySearchResult = () => {
-    if (cityList) {
+    if (cityList && inputValue) {
       return (
         <View style={styles.searchResultContainer}>
           {cityList.map(city => (
@@ -77,33 +86,38 @@ const SearchScreen = ({navigation}) => {
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.searchContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-            <Image
-              style={styles.backIcon}
-              source={{
-                uri:
-                  'https://icons.iconarchive.com/icons/icons8/ios7/256/Arrows-Left-icon.png',
-              }}
+          <View style={styles.searchInputBlock}>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+              <Image
+                style={styles.backIcon}
+                source={{
+                  uri:
+                    'https://icons.iconarchive.com/icons/icons8/ios7/256/Arrows-Left-icon.png',
+                }}
+              />
+            </TouchableOpacity>
+            <TextInput
+              style={styles.textInput}
+              autoFocus={true}
+              placeholder={'Search'}
+              value={inputValue}
+              onChangeText={text => handleTextInputChange(text)}
             />
-          </TouchableOpacity>
-          <TextInput
-            style={styles.textInput}
-            autoFocus={true}
-            placeholder={'Search'}
-            value={inputValue}
-            onChangeText={text => handleTextInputChange(text)}
-          />
-          <TouchableOpacity
-            style={styles.cleanIconButton}
-            onPress={() => onChangeInputValue('')}>
-            <Image
-              style={styles.cleanIcon}
-              source={{
-                uri:
-                  'https://cdn3.iconfinder.com/data/icons/ui-icons-5/16/cross-small-01-512.png',
-              }}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.cleanIconButton}
+              onPress={handleCleanButton}>
+              <Image
+                style={styles.cleanIcon}
+                source={{
+                  uri:
+                    'https://cdn3.iconfinder.com/data/icons/ui-icons-5/16/cross-small-01-512.png',
+                }}
+              />
+            </TouchableOpacity>
+          </View>
+          {loading && (
+            <ProgressBarAndroid styleAttr="Horizontal" color="#2196F3" />
+          )}
         </View>
         {displaySearchResult()}
       </View>
@@ -120,6 +134,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginLeft: 20,
     marginRight: 20,
+  },
+  searchInputBlock: {
     height: 50,
     borderRadius: 3,
     backgroundColor: '#ffffff',
@@ -141,6 +157,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   textInput: {
+    width: '90%',
     paddingTop: 8,
     paddingLeft: 10,
     fontSize: 17,
