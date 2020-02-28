@@ -27,13 +27,13 @@ const SignUpScreen = ({navigation}) => {
   }, [passwordInputFocus]);
 
   const handleSubmitButton = () => {
-    if (email) {
+    if (email && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       console.log('email is valid');
       setIsShowEmailWarning(false);
     } else {
       setIsShowEmailWarning(true);
     }
-    if (password) {
+    if (password && password.length > 7) {
       console.log('password is valid');
       setIsShowPasswordWarning(false);
     } else {
@@ -91,7 +91,7 @@ const SignUpScreen = ({navigation}) => {
           />
           {isShowPasswordWarning && (
             <Text style={styles.warningText}>
-              Please enter a valid password
+              Password must contain minimum 8 characters
             </Text>
           )}
         </View>
