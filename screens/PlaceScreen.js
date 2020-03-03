@@ -43,7 +43,7 @@ const PlaceScreen = ({navigation, route}) => {
           <ImagesCarousel images={place.photos} />
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => navigation.navigate('City')}>
+            onPress={() => navigation.goBack()}>
             <Image
               style={styles.backIcon}
               source={{
