@@ -5,51 +5,28 @@ import {
   Text,
   TouchableOpacity,
   View,
-  ImageBackground,
   ScrollView,
 } from 'react-native';
 
 import places from '../mocks/apartmentsMock.json';
-import {filterPlaces, formatDate} from '../utils';
+import PropertyListItem from '../components/PropertyListItem';
+import {filterPlaces} from '../utils';
 
 const CityScreen = ({navigation, route}) => {
   const {cityName} = route.params;
+
   const displayText = () =>
     cityName && <Text style={styles.cityText}>{cityName}</Text>;
+
   const filteredPlaces = filterPlaces(places, cityName);
+
   const displayPlace = () =>
     filteredPlaces &&
-    filteredPlaces.map(place => (
-      <View key={place.id} style={styles.placeContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('Place', {place})}>
-          <ImageBackground
-            source={{
-              uri: place.photos[0],
-            }}
-            style={styles.placePhoto}>
-            <View style={styles.placeLabel}>
-              <Text style={{color: '#ffffff'}}>
-                {formatDate(place.data) < 1
-                  ? 'today'
-                  : `${formatDate(place.data)}d ago`}
-              </Text>
-            </View>
-            <View style={styles.placeTextBlock}>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={[styles.placePriceText, styles.placeText]}>
-                  {place.price}
-                </Text>
-                <Text style={[styles.placeSizeText, styles.placeText]}>
-                  {place.beds} bd {place.baths} ba {place.sqft} sqft
-                </Text>
-              </View>
-              <Text style={[styles.placeAddressText, styles.placeText]}>
-                {place.address}
-              </Text>
-            </View>
-          </ImageBackground>
-        </TouchableOpacity>
-      </View>
+    filteredPlaces.map(el => (
+      <PropertyListItem
+        item={el}
+        handleItemPress={place => navigation.navigate('Place', {place})}
+      />
     ));
 
   return (

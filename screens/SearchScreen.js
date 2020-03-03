@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Geolocation from '@react-native-community/geolocation';
 import {
   View,
   Image,
@@ -14,14 +13,9 @@ import {
 import {filterCityList} from '../utils';
 
 const SearchScreen = ({navigation}) => {
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [inputValue, onChangeInputValue] = useState('');
   const [cityList, setCityList] = useState('');
-  const [location, setLocation] = useState({
-    latitude: 0,
-    longitude: 0,
-  });
 
   const getCityList = async text => {
     setLoading(true);
@@ -41,26 +35,6 @@ const SearchScreen = ({navigation}) => {
     const filteredCityList = filterCityList(resultList);
     setCityList(filteredCityList);
     setLoading(false);
-  };
-
-  const getLocation = () => {
-    Geolocation.getCurrentPosition(
-      loc => {
-        setError('');
-        setLocation({
-          latitude: loc.coords.latitude,
-          longitude: loc.coords.longitude,
-        });
-      },
-      err => setError(err.message),
-    );
-  };
-
-  const goToMapViewScreen = () => navigation.navigate('MapView', location);
-
-  const handleLocationButtonClick = async () => {
-    await getLocation();
-    await goToMapViewScreen();
   };
 
   const handleTextInputChange = text => {
@@ -114,7 +88,7 @@ const SearchScreen = ({navigation}) => {
           <View style={styles.locationContainer}>
             <TouchableOpacity
               style={styles.locationButton}
-              onPress={handleLocationButtonClick}>
+              onPress={() => navigation.navigate('MapView')}>
               <Image
                 style={styles.locationIcon}
                 source={{

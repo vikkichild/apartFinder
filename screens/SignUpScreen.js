@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
-  TextInput,
 } from 'react-native';
 import TopBar from '../components/TopBar';
 import LoginForm from '../components/LoginForm';

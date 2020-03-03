@@ -1,8 +1,12 @@
 [
   {
     "id": "1",
-    "city": "London, United Kingdom",
-    "address": "Chaucer Road E7",
+    "city": "Brooklyn, New York",
+    "address": "307 72nd St APT 4C, NY 11209",
+    "coordinate": {
+      "latitude": 40.633512,
+      "longitude": -74.0288474
+    },
     "overview": "A beautifully kept one/two bedroom flat situated on the first floor of this double bay fronted period property. Offering versatile accommodation and boasting wooden flooring throughout, the property consist of a wonderful kitchen/living area, stunning modern family bathroom and two double bedrooms - the master could easily be used a further reception room. Of additional benefit is the ample loft storage which could easily be converted subject to usual planning. Chaucer Road is a quiet tree lined street within walking distance to both Forest Gate and Maryland which are future Crossrail Stations. The green open spaces of West Ham Park are also close by.",
     "photos": [
       "https://lc.zoocdn.com/68f7b31e82e93e2a8d5110a37d7ce9e8b6aded65.jpg",
@@ -49,8 +53,12 @@
   },
   {
     "id": "2",
-    "city": "Berlin, Germany",
-    "address": "10787 Tiergarten",
+    "city": "Brooklyn, New York",
+    "address": "2475 E 11th St # FL3K, NY 11235",
+    "coordinate": {
+      "latitude": 40.5899941,
+      "longitude": -73.9614584
+    },
     "overview": "We are offering a vacant 2-room apartment with a living area of approx. 51 sqm, located on the 3rd floor of an apartment building from the year 2000. You can also easily reach the apartment via an elevator that stops on each floor. Both rooms have an access to the south facing balcony with a view to the quiet coutyard. Parquet floors were laid in the living rooms and the corridor. The kitchen floor and the bathroom are brightly tiled. The interior bathroom is equipped with a bathtub. The fitted kitchen with dishwasher, stove, extractor hood and refrigerator is included in the purchase price. There is a practical small storage room in the apartment. Also a basement is part of this offer. The apartment is heated centrally via district heating.\n\nThe house is located in the immediate vicinity of \"Großer Tiergarten\" and is well connected to public transport. The residential complex in the immediate vicinity of the \"Landwehrkanal\", \"Lützowufer\" and various embassies is well maintained. The so-called \"Pocketpark \" greened the large courtyard. Car driver reach the city motorway in a few minutes. Within walking distance are various shops for daily needs. The popular \"KadeWe\" and countless different shops along the \"Kurfürstendamm\" are easily reached.",
     "photos": [
       "https://www.berlinmaegleren.com/uploads/tx_realty/5468-kurz_hausansicht__wohnung_mit_suedbalkon_im_3og_07.jpg",
@@ -97,8 +105,12 @@
   },
   {
     "id": "3",
-    "city": "Dresden, Germany",
-    "address": "01458 Ottendorf-Okrilla",
+    "city": "Brooklyn, New York",
+    "address": "6602 14th Ave STE 1, NY 11219",
+    "coordinate": {
+      "latitude": 40.6240919,
+      "longitude": -74.0024291
+    },
     "overview": "",
     "photos": [
       "https://www.citymakler-dresden.de/Thumbs.php?filename=/var/www/web6/htdocs/immopicsdev/immo/19186-kurz_frontansicht.jpg",
@@ -144,8 +156,12 @@
   },
   {
     "id": "4",
-    "city": "Lyon, France",
-    "address": "Rhône, Auvergne-Rhône-Alpes",
+    "city": "Brooklyn, New York",
+    "address": "2514 E 7th St APT 4A, NY 11235",
+    "coordinate": {
+      "latitude": 40.5884513,
+      "longitude": -73.9647645
+    },
     "overview": "On the slopes of Croix-Rousse, on the 2nd floor of an old building, this 65m² canut apartment cleverly combines the cachet of yesteryear with contemporary renovation. The large living room hosts a kitchen open to a living room. In the mezzanine, a sleeping area takes place. Adjoining the entrance, a beautiful bedroom with shower room is ideally located. Close to shops and transport, this apartment combines volumes, character and functionality. Co-ownership of 15 lots - Annual charges: 1,233 euros",
     "photos": [
       "https://www.my-french-house.com/assets/content/properties/73558/photos/1.jpg",
@@ -192,6 +208,10 @@
     "id": "5",
     "city": "Brooklyn, New York",
     "address": "154 Van Buren St, NY 11221",
+    "coordinate": {
+      "latitude": 40.690256,
+      "longitude": -73.9420003
+    },
     "overview": "We are proud to unveil 154 Van Buren Street, a Stunning Luxury Two-Family Brownstone that has been completely gut renovated and meticulously designed to combine classic townhouse living with today's modern lifestyle. This masterfully developed smart home leaves no stone unturned with stunning attention to detail, custom finishes and thoughtfully designed layouts that provide comfort and style throughout your home. Two sets of custom Mahogany double-doors provide a grand entry to your new home, while your custom French doors lead out to your private terrace and back yard. The owner's duplex consists of 3 bedrooms and 2.5 bathrooms and a stunning gourmet kitchen. Some of the many features include: Viking and Bosch Appliances * Nest Smart Home products include Doorbell, Yale Keyless Door Lock, Alarm, Security Cameras & Smoke Alarms * Bose Speakers * A Fully Restored Wood Burning Fireplace * Gorgeous Exposed Bricks * 5 inch Hand Scraped Aged Oak Floors * Central HVAC * High Ceilings * Laundry on bedroom floors * Carrara Marble in the Owner?s bathrooms with Heated Floors * Fire Pit in the backyard * Built in Gas BBQ * and a Rooftop with glimpses of the Manhattan skyline. Finally, a luxury 2 bedroom rental provides an excellent opportunity for additional income. This property is being offered directly by the developer and we are offering 3% to buyer?s agent. Private showings available during the week.",
     "photos": [
       "https://photos.zillowstatic.com/uncropped_scaled_within_1536_1152/ISzj1uyu8ecc560000000000.webp",
@@ -244,6 +264,10 @@
     "id": "7",
     "city": "Brooklyn, New York",
     "address": "235 Ocean Pkwy APT 8B, NY 11218",
+    "coordinate": {
+      "latitude": 40.6440956,
+      "longitude": -73.9757845
+    },
     "overview": "Serenity can be yours with this beautiful and spacious top floor, rear facing apartment. You'll find blue skies, fabulous renovated interior space AND outdoor space galore, including a private balcony in prime Kensington. Your search for the ideal condo is over. You'll enter to find a large foyer--grand in size. The living room is oversized, with pretty crown molding, huge picture windows that provides sun all day, and new recessed lighting. The well-designed galley kitchen maximizes space and has granite counters, stainless appliances and a breakfast bar-its open to the dining room and open concept living room. You'll delight in your private balcony, measuring 12' long by 5'6\" wide, and you'll love having coffee, or sipping wine while looking at miles of sky. The master bedroom suite is gorgeous, with a huge, deep double closet and a brand new smartly designed, blue and white bath. The second bedroom is also quite spacious. Both are sun-filled. The main bath has also been upgraded. There is central a/c, a large washer/dryer closet and pantry, a linen closet, and a discreet area to hang jackets/hats, et al. And there are beautiful oak floors throughout. Add in a huge shared backyard and roofdeck--and you'll be able to enjoy the great outdoors without leaving the building. A separate deeded storage room comes with this unit.",
     "photos": [
       "https://photos.zillowstatic.com/uncropped_scaled_within_1536_1152/ISjv721e1p4cll1000000000.webp",
@@ -291,8 +315,12 @@
   },
   {
     "id": "8",
-    "city": "Dresden, Germany",
-    "address": "01705 Freital",
+    "city": "Brooklyn, New York",
+    "address": "2251 Plumb 1st St APT 4A, NY 11229",
+    "coordinate": {
+      "latitude": 40.5988068,
+      "longitude": -73.9345322
+    },
     "overview": "",
     "photos": [
       "https://www.citymakler-dresden.de/Thumbs.php?filename=/var/www/web6/htdocs/immopicsdev/immo/19016-kurz_gartenansicht.jpg",
@@ -336,8 +364,12 @@
   },
   {
     "id": "9",
-    "city": "Berlin, Germany",
-    "address": "13467 Reinickendorf",
+    "city": "Brooklyn, New York",
+    "address": "124 Atlantic Ave APT A3B, NY 11201",
+    "coordinate": {
+      "latitude": 40.6902345,
+      "longitude": -73.9978204
+    },
     "overview": "",
     "photos": [
       "https://www.berlinmaegleren.com/uploads/tx_realty/5443-kurz_haus_04.jpg",
@@ -383,8 +415,12 @@
   },
   {
     "id": "10",
-    "city": "London, United Kingdom",
-    "address": "Norwich Road E7",
+    "city": "Brooklyn, New York",
+    "address": "7259-7261 Shore Rd, NY 11209",
+    "coordinate": {
+      "latitude": 40.6348999,
+      "longitude": -74.0385777
+    },
     "overview": "Acting as sole agents we are delighted to offer for sale this exceptionally well presented period property, which is situated within a stone throw's distance to Forest Gate Station. In brief the property has a fully fitted kitchen with appliances, a 3 piece Victorian bathroom suite that benefits by having underfloor heating. It also has access to its own rear garden and shed. Please call into the Forest Gate branch for more details.",
     "photos": [
       "https://lc.zoocdn.com/ac63a75a1b8f542bfd7fc1748283d83d2d866296.jpg",
@@ -431,8 +467,12 @@
   },
   {
     "id": "14",
-    "city": "London, United Kingdom",
-    "address": "Odessa Road E7",
+    "city": "Brooklyn, New York",
+    "address": "6214 24th Ave # PH1, NY 11204",
+    "coordinate": {
+      "latitude": 40.6127582,
+      "longitude": -73.9778966
+    },
     "overview": "This three bedroom mid terrace Victorian property is offered to the market with no onward chain. The briefly comprises 3 bedrooms, reception rooms, dining room, kitchen and ground floor bathroom alongside three good size bedrooms on the first floor.\n\nThe property is conveniently located a short distant from central Stratford which allows for easy access to Canary Wharf and The City. Three stations - Maryland, Forest Gate and Wanstead Park - are all conveniently located nearby.\n\nThis fabulous Victorian terraced house is the perfect family home. Beautifully renovated to a high standard by the current owners it benefits from three bedrooms and a rear garden. The property benefits from a reception room and dining room, the property comprises of a cosy reception room with beautiful bay window to the front reception room. Continuing on the ground floor leads through into the kitchen, family bathroom and onwards into the rear garden. Upstairs are two good sized bedrooms, with a smaller third.",
     "photos": [
       "https://lc.zoocdn.com/8b518ce239fef2f715195e48f0f88130a4ab94ff.jpg",
@@ -481,8 +521,12 @@
   },
   {
     "id": "15",
-    "city": "London, United Kingdom",
-    "address": "Carville Gardens, Tyne And Wear NE28",
+    "city": "Brooklyn, New York",
+    "address": "2833 Ocean Pkwy APT 6B, NY",
+    "coordinate": {
+      "latitude": 40.5806493,
+      "longitude": -73.9691037
+    },
     "overview": "We welcome to the market this well presented two bed mid terraced property which is nicely situated on Carville Road, London which is within walking distance of local amenities and Wallsend Metro Station. The property briefly comprises: Entrance porch, lounge, inner hallway, bathroom and kitchen which offers a good range of wall, floor and drawer units and leads onto the rear courtyard. To the first floor there is two double bedrooms. We feel this property would suit a range of buyers and early viewings are strongly recommended to fully appreciate the standard of accommodation on offer. EPC Grade E.",
     "photos": [
       "https://lc.zoocdn.com/ea48231e14c58395fc2faee28d64ea3949eeb736.jpg",
