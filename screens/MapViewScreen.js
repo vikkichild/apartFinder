@@ -7,8 +7,11 @@ import TopBar from '../components/TopBar';
 import PriceMapMarker from '../components/PriceMapMarker';
 import PropertyListItem from '../components/PropertyListItem';
 import places from '../mocks/apartmentsMock.json';
+import {filterCityList} from '../utils';
 
 const {width, height} = Dimensions.get('window');
+
+import {GOOGLE_API_KEY} from 'react-native-dotenv';
 
 const ASPECT_RATIO = width / height;
 const LATITUDE = 40.6435;
@@ -23,6 +26,8 @@ const MapViewScreen = ({navigation}) => {
     longitude: 0,
   });
   const [property, setProperty] = useState({});
+  const [locationName, setLocationName] = useState('');
+  const [address, setAddress] = useState('');
 
   const getLocation = () => {
     Geolocation.getCurrentPosition(
@@ -37,8 +42,24 @@ const MapViewScreen = ({navigation}) => {
     );
   };
 
+  const getLocationName = async () => {
+    await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${LATITUDE},${LONGITUDE}&key=${GOOGLE_API_KEY}`,
+    )
+      .then(response => response.json())
+      .then(data => {
+        setLocationName(data.results[1].plus_code.compound_code);
+        setAddress(data.results[0].formatted_address);
+      })
+      .catch(err => console.log(err));
+  };
+
   useEffect(() => {
     getLocation();
+  });
+
+  useEffect(() => {
+    getLocationName();
   });
 
   const handleMarkerPress = item => {
@@ -47,13 +68,15 @@ const MapViewScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <TopBar
-        handleButtonPress={() => navigation.navigate('Search')}
-        icon={
-          'https://icons.iconarchive.com/icons/icons8/ios7/256/Arrows-Left-icon.png'
-        }
-        title={'Map View'}
-      />
+      {!!address && (
+        <TopBar
+          handleButtonPress={() => navigation.navigate('Search')}
+          icon={
+            'https://icons.iconarchive.com/icons/icons8/ios7/256/Arrows-Left-icon.png'
+          }
+          title={address}
+        />
+      )}
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}
