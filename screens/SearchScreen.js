@@ -17,9 +17,9 @@ const SearchScreen = ({navigation}) => {
   const [inputValue, onChangeInputValue] = useState('');
   const [cityList, setCityList] = useState('');
 
-  const getCityList = async text => {
+  const getCityList = text => {
     setLoading(true);
-    const response = await fetch(
+    fetch(
       `https://devru-latitude-longitude-find-v1.p.rapidapi.com/latlon.php?location=${text}`,
       {
         method: 'GET',
@@ -29,12 +29,15 @@ const SearchScreen = ({navigation}) => {
             'a002804b5fmsh3ef43d6b0756d2bp15e9d8jsn1dc393d4fe01',
         },
       },
-    );
-    const data = await response.json();
-    const resultList = data.Results;
-    const filteredCityList = filterCityList(resultList);
-    setCityList(filteredCityList);
-    setLoading(false);
+    )
+      .then(response => response.json())
+      .then(data => data.Results)
+      .then(resultList => {
+        const filteredCityList = filterCityList(resultList);
+        setCityList(filteredCityList);
+        setLoading(false);
+      })
+      .catch(err => console.log(err));
   };
 
   const handleTextInputChange = text => {
